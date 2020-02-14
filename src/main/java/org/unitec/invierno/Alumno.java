@@ -5,7 +5,9 @@
  */
 package org.unitec.invierno;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Alumno {
  String id;
  String email;
