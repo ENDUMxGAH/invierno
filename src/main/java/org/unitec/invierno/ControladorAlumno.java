@@ -21,13 +21,9 @@ public class ControladorAlumno {
  
    
    @GetMapping("/alumno")
-   public Estatus guardar(){
-       Alumno a=new Alumno();
-       a.setEdad(40);
-       a.setEmail("rapidclimate@gmail.com");
-   repoAlumno.save(a);
-       Estatus e=new Estatus();
-       return e;
+   public List<Alumno> buscarTodos(){
+    
+       return repoAlumno.findAll();
 }
     
 }
