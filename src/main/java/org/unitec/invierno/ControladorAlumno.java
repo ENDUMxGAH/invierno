@@ -5,6 +5,7 @@
  */
 package org.unitec.invierno;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,17 @@ public class ControladorAlumno {
     
        return repoAlumno.findAll();
 }
+   
+   @PostMapping("/alumno")
+   public Estatus guardar(@RequestBody String json)throws Exception{
+       
+      ObjectMapper maper=new ObjectMapper();
+      Alumno a=maper.readValue(json, Alumno.class);
+      repoAlumno.save(a);
+      Estatus e=new Estatus();
+      e.setMensaje("Guardado con exitooooo");
+      e.setSuccess(true);
+      return e;
+   }
     
 }
